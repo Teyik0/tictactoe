@@ -1,0 +1,32 @@
+.grid {
+    display: grid;
+    grid-template-rows: 105px 105px 105px;
+    grid-template-columns: 105px 105px 105px;
+    margin: 2rem;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+}
+
+.information {
+    display: flex;
+    flex-direction: column;
+    .rejouer {
+        margin: 2rem;
+        border-radius: 20px;
+        padding: 1rem;
+        width: 200px;
+    }
+    span {
+        margin-top: 1rem;
+        margin-left: 2rem;
+        padding: 1rem;
+        border: 2px solid black;
+        border-radius: 20px;
+        text-align: center;
+        width: 200px;
+    }
+}
+
