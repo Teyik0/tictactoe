@@ -1,5 +1,78 @@
-@import './settings';
-@import '../components/Square.scss';
-@import '../components/MorpionGrid.scss';
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', 'Segoe UI';
+    background-color: rgb(35, 36, 36);
+    color: rgb(206, 221, 223);
+}
 
+a {
+  text-decoration: none;
+}
+
+.grid {
+  display: grid;
+  grid-template-rows: 105px 105px 105px;
+  grid-template-columns: 105px 105px 105px;
+  margin: 2rem;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+}
+
+.information {
+  display: flex;
+  flex-direction: column;
+  .rejouer {
+      margin: 2rem;
+      border-radius: 20px;
+      padding: 1rem;
+      width: 200px;
+      cursor: pointer;
+      transition: .3s ease-in-out;
+  }
+  .rejouer:hover {
+      background-color: rgb(58, 67, 67);
+      transition: .6s ease-in-out;
+      transform: scale(1.1);
+  }
+  span {
+      margin-top: 1rem;
+      margin-left: 2rem;
+      padding: 1rem;
+      border: 2px solid black;
+      border-radius: 20px;
+      text-align: center;
+      width: 200px;
+  }
+}
+
+.square {
+  display: flex;
+  flex-direction: row;
+  width: 100px;
+  height: 100px;
+  border-radius: 20px;
+  background-color: rgb(41, 49, 49);
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  font-size: 30px;
+  text-transform: uppercase;
+  color: rgb(121, 138, 155);
+  transition: .6s ease-in-out;
+}
+.square:hover{
+    transition: .6s ease-in-out;
+    background-color: rgb(60, 71, 71);
+}
+
+.win {
+  background-color: rgb(40, 66, 51);
+}
 

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import "../styles/index.scss";
 
 function TicTacToe() {
   const [joueurToPlay, setJoueurToPlay] = useState("j1");
@@ -17,14 +18,17 @@ function TicTacToe() {
 
   useEffect(() => {
     if (String(isWin()).includes("case")) {
-      //console.log("Partie terminé !");
-      if (joueurToPlay === "j1") {
-        setWinner("J2 a gagné la partie !");
-      } else {
-        setWinner("J1 a gagné la partie !");
-      }
+      if (joueurToPlay === "j1") setWinner("J2 a gagné la partie !");
+      if (joueurToPlay === "j2") setWinner("J1 a gagné la partie !");
     }
-  });
+    if (String(isWin()).includes("null")) setWinner("Match null !");
+  }, [joueurToPlay, isWin]);
+
+  useEffect(() => {
+    if (winner === "J1 a gagné la partie !") setj1win(j1win + 1);
+    if (winner === "J2 a gagné la partie !") setj2win(j2win + 1);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [winner]);
 
   function reset() {
     setItem1("");
@@ -43,39 +47,8 @@ function TicTacToe() {
     setWinner("Partie en cours...");
   }
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   function isWin() {
-    if (item1 === item2 && item2 === item3 && item1 !== "") {
-      //console.log("case1");
-      return "case1";
-    }
-    if (item4 === item5 && item5 === item6 && item4 !== "") {
-      //console.log("case2");
-      return "case2";
-    }
-    if (item7 === item8 && item8 === item9 && item7 !== "") {
-      //console.log("case3");
-      return "case3";
-    }
-    if (item1 === item4 && item4 === item7 && item4 !== "") {
-      //console.log("case4");
-      return "case4";
-    }
-    if (item2 === item5 && item5 === item8 && item2 !== "") {
-      //console.log("case5");
-      return "case5";
-    }
-    if (item3 === item6 && item6 === item9 && item3 !== "") {
-      //console.log("case6");
-      return "case6";
-    }
-    if (item1 === item5 && item5 === item9 && item5 !== "") {
-      //console.log("case7");
-      return "case7";
-    }
-    if (item3 === item5 && item5 === item7 && item5 !== "") {
-      //console.log("case8");
-      return "case8";
-    }
     if (
       item1 !== "" &&
       item2 !== "" &&
@@ -86,10 +59,18 @@ function TicTacToe() {
       item7 !== "" &&
       item8 !== "" &&
       item9 !== ""
-    ) {
-      //console.log("case null");
-      return "casenull";
-    } else return "null";
+    )
+      return "null";
+
+    if (item1 === item2 && item2 === item3 && item1 !== "") return "case1";
+    if (item4 === item5 && item5 === item6 && item4 !== "") return "case2";
+    if (item7 === item8 && item8 === item9 && item7 !== "") return "case3";
+    if (item1 === item4 && item4 === item7 && item4 !== "") return "case4";
+    if (item2 === item5 && item5 === item8 && item2 !== "") return "case5";
+    if (item3 === item6 && item6 === item9 && item3 !== "") return "case6";
+    if (item1 === item5 && item5 === item9 && item5 !== "") return "case7";
+    if (item3 === item5 && item5 === item7 && item5 !== "") return "case8";
+    else return;
   }
 
   function play(joueurToPlay) {
